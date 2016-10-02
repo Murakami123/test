@@ -1,0 +1,12 @@
+スクリプトにアタッチせずに、スクリプトから直接Prefabを指定してインスタンスを生成する方法の紹介をします。
+
+まずProjectビューに「Resources」フォルダを作って、そのフォルダの下にプレハブを配置します。
+図ではさらに「Prefabs」フォルダを作ってその下に配置していますが、これは無くても問題ありません。
+これにより、Resources.Load()を使用することで、スクリプトからプレハブを取得することができます。
+// プレハブを取得
+GameObject prefab = (GameObject)Resources.Load ("Prefabs/Shot");
+// プレハブからインスタンスを生成
+Instantiate (prefab, position, Quaternion.identity);
+今回は、Prefabsというフォルダの下に配置したので、指定する文字列は"Prefabs/Shot"となります。
+もし"Resources"ファルダの直下に配置するのであれば"Shot"を指定することとなります。
+これにより、アタッチが不要となるので、static関数からプレハブをインスタンス化することが可能となります。
